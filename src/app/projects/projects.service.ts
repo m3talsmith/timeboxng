@@ -9,11 +9,23 @@ export class ProjectsService {
   constructor() { }
 
   getAll(): Project[] {
-    return [
-      {
-        uid: Date.now().toString(),
-        name: "pre-configured"
-      }
-    ]
+    const storedProjects = localStorage.getItem("projects");
+    let projects = storedProjects ? JSON.parse(storedProjects) : []
+    return projects;
+  }
+
+  save(project: Project): Project {
+    let projects = this.getAll();
+    if (project.uid === '') {
+      project.uid = Date.now().toString();
+    }
+    let i = projects.findIndex((p) => p.uid === project.uid);
+    if (i >= 0) {
+      projects[i] = project;
+    } else {
+      projects.push(project);
+    }
+    localStorage.setItem("projects", JSON.stringify(projects));
+    return project;
   }
 }
