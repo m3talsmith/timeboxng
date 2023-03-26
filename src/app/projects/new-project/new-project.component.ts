@@ -15,7 +15,6 @@ export class NewProjectComponent {
   });
   constructor(private srvc: ProjectsService) {}
   onSubmit() {
-    console.log("projectForm", this.projectForm);
     const name = this.projectForm.get("name")?.value as string;
     const uid = Date.now.toString();
     const tasks: any[] = [];

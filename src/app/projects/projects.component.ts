@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NewProjectComponent } from './new-project/new-project.component';
 import { Project, timeEstimated, timeSpent } from './project';
 import { ProjectsService } from './projects.service';
 
@@ -12,11 +11,10 @@ export class ProjectsComponent {
   projects: Project[] = [];
   newProjectActive = false;
   constructor(private srvc: ProjectsService) {
-    this.projects = srvc.getAll();
+    this.projects = this.srvc.getAll();
   }
 
   newProject() {
-    console.log("newProject");
     this.newProjectActive = true
   }
 

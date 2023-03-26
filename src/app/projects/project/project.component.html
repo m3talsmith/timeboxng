@@ -1,0 +1,19 @@
+<mat-expansion-panel hideToggle>
+  <mat-expansion-panel-header>
+    <mat-panel-title>{{name}}</mat-panel-title>
+    <mat-panel-description>
+      <mat-progress-bar mode="determinate" value="projectProgress(uid)"></mat-progress-bar>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <div class="action-bar">
+    <span class="title">Tasks</span>
+    <span class="spacer"></span>
+    <button mat-icon-button (click)="newTask()">
+      <mat-icon>add_circle</mat-icon>
+    </button>
+  </div>
+  <app-new-project-task *ngIf="newTaskActive" (addTaskEvent)="addTask($event)"></app-new-project-task>
+  <div *ngFor="let task in tasks">
+    <p>Name: {{task.name}}</p>
+  </div>
+</mat-expansion-panel>

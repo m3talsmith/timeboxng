@@ -13,13 +13,15 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { ProjectsComponent } from './projects.component';
 import { NewProjectComponent } from './new-project/new-project.component';
-import { NewTasksComponent } from './new-tasks/new-tasks.component';
+import { ProjectComponent } from './project/project.component';
+import { NewTaskComponent } from './project/new-task/new-task.component';
 
 @NgModule({
   declarations: [
     ProjectsComponent,
     NewProjectComponent,
-    NewTasksComponent
+    ProjectComponent,
+    NewTaskComponent,
   ],
   imports: [
     CommonModule,
