@@ -1,6 +1,7 @@
-import { Timebox } from "./timebox";
+import { TimeWindow } from "./time-window";
+
 export interface Task {
   estimate: number,
-  timeboxes: Timebox[],
+  timeWindows: TimeWindow[],
   finished: boolean,
 }

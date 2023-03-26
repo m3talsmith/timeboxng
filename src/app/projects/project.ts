@@ -1,5 +1,5 @@
 import { Task } from "./task";
-import { Timebox } from "./timebox";
+import { TimeWindow } from "./time-window";
 
 export interface Project {
   uid: string;
@@ -19,8 +19,15 @@ export function timeEstimated(project: Project): number {
 }
 
 export function timeSpent(project: Project): number {
-  const timeboxes: Timebox[] = project.tasks.filter((t) => t.finished).flatMap((t) => t.timeboxes);
-  return timeboxes.length * 15;
+  return project.tasks
+    .filter((t) => t.finished)
+    .flatMap((t) => t.timeWindows)
+    .map((t) => {
+      const start = Date.parse(t.start.toString());
+      const stop = Date.parse(t.stop.toString());
+      return stop - start;
+    })
+    .reduce((sum, t) => sum += t);
 }
 
 export function timeLeft(project: Project): number {
