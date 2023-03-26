@@ -1,0 +1,8 @@
+<h2>New Project</h2>
+<form [formGroup]="projectForm" (submit)="onSubmit()">
+  <label>
+    Name
+    <input type="text" formControlName="name" mat-input />
+  </label>
+  <button mat-button>Create</button>
+</form>

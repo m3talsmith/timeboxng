@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.action-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid #bbaed3;
+  padding: 0.5rem;
+  margin: 1rem;
+  border-radius: 0.25rem;
+  background-color: #d9ceed;
+  box-shadow: 0rem 0.3rem 0.7rem rgb(208 191 237 / 80%);
+}
+.action-bar .title {
+  font-weight: 700;
+}
+.spacer {
+  flex: 1 1 auto;
+}

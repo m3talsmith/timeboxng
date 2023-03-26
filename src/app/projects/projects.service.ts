@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Project } from './project';
+import { DefaultProject, Project } from './project';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +10,12 @@ export class ProjectsService {
 
   getAll(): Project[] {
     const storedProjects = localStorage.getItem("projects");
-    let projects = storedProjects ? JSON.parse(storedProjects) : []
+    let projects = storedProjects ? JSON.parse(storedProjects) : [];
     return projects;
+  }
+
+  find(uid: string): Project {
+    return this.getAll().find((p) => p.uid === uid) || DefaultProject;
   }
 
   save(project: Project): Project {

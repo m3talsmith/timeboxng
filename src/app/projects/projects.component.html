@@ -1,0 +1,26 @@
+<div class="action-bar">
+  <span class="title">Projects</span>
+  <span class="spacer"></span>
+  <button mat-icon-button (click)="newProject()">
+    <mat-icon>add_circle</mat-icon>
+  </button>
+</div>
+<app-new-project *ngIf="newProjectActive" (addProjectEvent)="addProject($event)"></app-new-project>
+<mat-accordion>
+  <mat-expansion-panel hideToggle *ngFor="let project of projects">
+    <mat-expansion-panel-header>
+      <mat-panel-title>{{project.name}}</mat-panel-title>
+      <mat-panel-description>
+        <mat-progress-bar mode="determinate" value="projectProgress(project.uid)"></mat-progress-bar>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="action-bar">
+      <span class="title">Tasks</span>
+      <span class="spacer"></span>
+      <button mat-icon-button>
+        <mat-icon>add_circle</mat-icon>
+      </button>
+    </div>
+    <p>boo</p>
+  </mat-expansion-panel>
+</mat-accordion>

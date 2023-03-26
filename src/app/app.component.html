@@ -1,7 +1,14 @@
-<nav>
-  <ul>
-    <li><a routerLink="">Home</a></li>
-    <li><a routerLink="projects">Projects</a></li>
-  </ul>
-</nav>
-<router-outlet></router-outlet>
+<mat-toolbar>
+  <span>Timeboxng</span>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened>
+    <mat-list>
+      <mat-list-item><a routerLink="">Home</a></mat-list-item>
+      <mat-list-item><a routerLink="projects">Projects</a></mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-container>
+    <router-outlet></router-outlet>
+  </mat-sidenav-container>
+</mat-sidenav-container>
