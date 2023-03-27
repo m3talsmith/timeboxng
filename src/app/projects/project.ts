@@ -1,5 +1,4 @@
 import { Task } from "./task";
-import { TimeWindow } from "./time-window";
 
 export interface Project {
   uid: string;

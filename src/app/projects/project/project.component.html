@@ -2,7 +2,7 @@
   <mat-expansion-panel-header>
     <mat-panel-title>{{name}}</mat-panel-title>
     <mat-panel-description>
-      <mat-progress-bar mode="determinate" value="projectProgress(uid)"></mat-progress-bar>
+      <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
     </mat-panel-description>
   </mat-expansion-panel-header>
   <div class="action-bar">
@@ -12,8 +12,14 @@
       <mat-icon>add_circle</mat-icon>
     </button>
   </div>
-  <app-new-project-task *ngIf="newTaskActive" (addTaskEvent)="addTask($event)"></app-new-project-task>
-  <div *ngFor="let task in tasks">
-    <p>Name: {{task.name}}</p>
-  </div>
+  <app-new-project-task *ngIf="newTaskActive" (addTaskEvent)="addTask($event)" [projectUid]="uid"></app-new-project-task>
+  <app-project-task
+    *ngFor="let task of tasks"
+    [projectUid]="uid"
+    [uid]="task.uid"
+    [name]="task.name"
+    [estimate]="task.estimate"
+    [timeWindows]="task.timeWindows"
+    [finished]="task.finished"
+  ></app-project-task>
 </mat-expansion-panel>

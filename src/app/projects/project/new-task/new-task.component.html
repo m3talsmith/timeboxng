@@ -1,1 +1,12 @@
-<p>new-task works!</p>
+<h2>New Task</h2>
+<form [formGroup]="taskForm" (submit)="onSubmit()">
+  <label>
+    Name
+    <input type="text" formControlName="name" />
+  </label>
+  <label>
+    Estimate
+    <input type="text" formControlName="estimate" />
+  </label>
+  <button mat-button>Create</button>
+</form>

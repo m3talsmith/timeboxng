@@ -9,6 +9,7 @@
 <mat-accordion>
   <app-project
     *ngFor="let project of projects"
+    [uid]="project.uid"
     [name]="project.name"
     [tasks]="project.tasks"
   ></app-project>

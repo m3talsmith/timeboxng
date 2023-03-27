@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ProjectsComponent } from './projects.component';
 import { NewProjectComponent } from './new-project/new-project.component';
 import { ProjectComponent } from './project/project.component';
+import { TaskComponent } from './project/task/task.component';
 import { NewTaskComponent } from './project/new-task/new-task.component';
 
 @NgModule({
@@ -22,6 +23,7 @@ import { NewTaskComponent } from './project/new-task/new-task.component';
     NewProjectComponent,
     ProjectComponent,
     NewTaskComponent,
+    TaskComponent
   ],
   imports: [
     CommonModule,
