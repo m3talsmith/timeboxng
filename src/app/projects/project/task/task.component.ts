@@ -25,15 +25,27 @@ export class TaskComponent implements OnInit{
     return isFinished(this);
   }
 
-  progress(): number {
-    if (this.estimate === 0) {
-      return 100;
-    }
-    const timeSpent = this.timeWindows.length > 0
+  timeWindowSum(): number {
+    return this.timeWindows.length > 0
       ? this.timeWindows
         .map((t) => t.stop - t.start)
         .reduce((sum, t) => sum += t)
       : 0
+  }
+
+  estimatedIncrements(): number {
+    return Math.floor(this.estimate / 15);
+  }
+
+  progressIncrements(): number {
+    return Math.floor(this.timeWindowSum() / 15);
+  }
+
+  progress(): number {
+    if (this.estimate === 0) {
+      return 100;
+    }
+    const timeSpent = this.timeWindowSum();
     if (timeSpent > 0) {
       return timeSpent / this.estimate;
     }
