@@ -11,6 +11,7 @@ import { ProjectsService } from '../../projects.service'
 export class NewTaskComponent {
   @Input() projectUid = '';
   @Output() addTaskEvent = new EventEmitter<Task>();
+  @Output() cancelAddTaskEvent = new EventEmitter();
   taskForm = new FormGroup({
     name: new FormControl(''),
     estimate: new FormControl(0),
@@ -27,5 +28,9 @@ export class NewTaskComponent {
     const projectUid = this.projectUid;
     const task = {name, estimate, projectUid, uid, timeWindows, finished};
     this.addTaskEvent.emit(task);
+  }
+  onCancel() {
+    this.taskForm.reset();
+    this.cancelAddTaskEvent.emit();
   }
 }

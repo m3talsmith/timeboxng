@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TimeWindow } from '../../time-window';
+import { isFinished } from '../../task';
 
 @Component({
   selector: 'app-project-task',
@@ -18,6 +19,10 @@ export class TaskComponent implements OnInit{
     if (this.estimate === 0) {
       this.finished = true;
     }
+  }
+
+  isFinished() {
+    return isFinished(this);
   }
 
   progress(): number {

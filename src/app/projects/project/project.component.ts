@@ -43,6 +43,10 @@ export class ProjectComponent implements OnInit {
     this.newTaskActive = false;
   }
 
+  cancelAddTask() {
+    this.newTaskActive = false;
+  }
+
   calculateProgress(): number {
     console.log(this.tasks);
     const finished = this.tasks.filter((t) => isFinished(t))

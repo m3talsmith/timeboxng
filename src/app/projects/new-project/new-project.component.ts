@@ -10,6 +10,7 @@ import { ProjectsService } from '../projects.service';
 })
 export class NewProjectComponent {
   @Output() addProjectEvent = new EventEmitter<Project>();
+  @Output() cancelAddProjectEvent = new EventEmitter();
   projectForm = new FormGroup({
     name: new FormControl('')
   });
@@ -20,5 +21,9 @@ export class NewProjectComponent {
     const tasks: any[] = [];
     const project = this.srvc.save({uid, name, tasks});
     this.addProjectEvent.emit(project);
+  }
+  onCancel() {
+    this.projectForm.reset();
+    this.cancelAddProjectEvent.emit();
   }
 }

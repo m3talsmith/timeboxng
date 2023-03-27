@@ -6,20 +6,29 @@
     </mat-panel-description>
   </mat-expansion-panel-header>
   <div class="action-bar">
-    <span class="title">Tasks</span>
-    <span class="spacer"></span>
-    <button mat-icon-button (click)="newTask()">
-      <mat-icon>add_circle</mat-icon>
-    </button>
+    <div class="action-bar-header">
+      <span class="action-bar-title">Tasks</span>
+      <span class="spacer"></span>
+      <button mat-icon-button (click)="newTask()">
+        <mat-icon>add_circle</mat-icon>
+      </button>
+    </div>
+    <div class="action-bar-content">
+      <app-new-project-task
+        *ngIf="newTaskActive"
+        (addTaskEvent)="addTask($event)"
+        (cancelAddTaskEvent)="cancelAddTask()"
+        [projectUid]="uid"
+      ></app-new-project-task>
+      <app-project-task
+        *ngFor="let task of tasks"
+        [projectUid]="uid"
+        [uid]="task.uid"
+        [name]="task.name"
+        [estimate]="task.estimate"
+        [timeWindows]="task.timeWindows"
+        [finished]="task.finished"
+      ></app-project-task>
+    </div>
   </div>
-  <app-new-project-task *ngIf="newTaskActive" (addTaskEvent)="addTask($event)" [projectUid]="uid"></app-new-project-task>
-  <app-project-task
-    *ngFor="let task of tasks"
-    [projectUid]="uid"
-    [uid]="task.uid"
-    [name]="task.name"
-    [estimate]="task.estimate"
-    [timeWindows]="task.timeWindows"
-    [finished]="task.finished"
-  ></app-project-task>
 </mat-expansion-panel>

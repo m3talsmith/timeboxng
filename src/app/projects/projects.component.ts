@@ -23,6 +23,10 @@ export class ProjectsComponent {
     this.newProjectActive = false;
   }
 
+  cancelAddProject() {
+    this.newProjectActive = false;
+  }
+
   projectProgress(projectUid: string): number {
     const project = this.projects.find((p) => p.uid === projectUid) as Project;
     const percentage = timeSpent(project) / timeEstimated(project);

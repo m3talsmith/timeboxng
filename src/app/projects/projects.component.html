@@ -1,11 +1,17 @@
 <div class="action-bar">
-  <span class="title">Projects</span>
-  <span class="spacer"></span>
-  <button mat-icon-button (click)="newProject()">
-    <mat-icon>add_circle</mat-icon>
-  </button>
+  <div class="action-bar-header">
+    <span class="action-bar-title">Projects</span>
+    <span class="spacer"></span>
+    <button mat-icon-button (click)="newProject()">
+      <mat-icon>add_circle</mat-icon>
+    </button>
+  </div>
 </div>
-<app-new-project *ngIf="newProjectActive" (addProjectEvent)="addProject($event)"></app-new-project>
+<app-new-project
+  *ngIf="newProjectActive"
+  (addProjectEvent)="addProject($event)"
+  (cancelAddProjectEvent)="cancelAddProject()"
+></app-new-project>
 <mat-accordion>
   <app-project
     *ngFor="let project of projects"
