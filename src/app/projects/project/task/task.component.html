@@ -1,15 +1,19 @@
 <div class="action-item">
   <span class="action-item-title">{{name}}</span>
-  <mat-progress-bar mode="determinate" value="{{progress()}}"></mat-progress-bar>
   <button mat-icon-button *ngIf="!isFinished()">
-    <mat-icon>play_arrow</mat-icon>
+    <mat-icon>stop</mat-icon>
   </button>
   <button mat-icon-button *ngIf="isFinished()">
     <mat-icon>replay</mat-icon>
   </button>
-  <div>
-    <p>Estimated Increments {{estimatedIncrements()}}</p>
-    <p>Progress Increments: {{progressIncrements()}}</p>
-    <div class="timebox" *ngFor="timeboxes"></div>
+  <div class="timebox-bar">
+    <div class="timebox" *ngFor="let box of timeboxes()">
+      <span class="background" *ngIf="!box.complete && !box.overage"></span>
+      <span class="background complete" *ngIf="box.complete"></span>
+      <span class="background overage" *ngIf="box.overage"></span>
+    </div>
   </div>
+  <button mat-icon-button *ngIf="!isFinished()">
+    <mat-icon>play_arrow</mat-icon>
+  </button>
 </div>

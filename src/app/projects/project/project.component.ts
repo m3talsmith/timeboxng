@@ -48,9 +48,7 @@ export class ProjectComponent implements OnInit {
   }
 
   calculateProgress(): number {
-    console.log(this.tasks);
     const finished = this.tasks.filter((t) => isFinished(t))
-    console.log(finished, this.tasks);
     return (finished.length / this.tasks.length) * 100;
   }
 }

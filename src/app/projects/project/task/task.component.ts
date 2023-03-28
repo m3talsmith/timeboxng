@@ -45,12 +45,14 @@ export class TaskComponent implements OnInit{
   timeboxes(): Timebox[] {
     const min = this.estimatedIncrements();
     const max = this.progressIncrements();
-    return Array
-      .from(Array(max).keys())
+    let x = min > max ? min : max
+    return Array.from(Array(x+1).keys())
       .map((n) => {
         const complete = (n < max);
-        const overage = (n > min);
-        return {complete, overage};
+        const overage = (n >= min && n-1 < max);
+        const box = {complete, overage};
+        console.log(this.name, box);
+        return box;
       });
   }
 
