@@ -1,9 +1,9 @@
 <div class="action-item">
   <span class="action-item-title">{{name}}</span>
-  <button mat-icon-button *ngIf="!isFinished()">
+  <button mat-icon-button *ngIf="!finished">
     <mat-icon>stop</mat-icon>
   </button>
-  <button mat-icon-button *ngIf="isFinished()">
+  <button mat-icon-button *ngIf="finished">
     <mat-icon>replay</mat-icon>
   </button>
   <div class="timebox-bar">
@@ -13,7 +13,18 @@
       <span class="background overage" *ngIf="box.overage"></span>
     </div>
   </div>
-  <button mat-icon-button *ngIf="!isFinished()">
+  <button
+    mat-icon-button
+    *ngIf="!finished && !running"
+    (click)="start()"
+  >
     <mat-icon>play_arrow</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    *ngIf="!finished && running"
+    (click)="pause()"
+  >
+    <mat-icon>pause</mat-icon>
   </button>
 </div>
