@@ -16,7 +16,6 @@ import { NewProjectComponent } from './new-project/new-project.component';
 import { ProjectComponent } from './project/project.component';
 import { TaskComponent } from './project/task/task.component';
 import { NewTaskComponent } from './project/new-task/new-task.component';
-import { TimeboxComponent } from './project/task/timebox/timebox.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +23,7 @@ import { TimeboxComponent } from './project/task/timebox/timebox.component';
     NewProjectComponent,
     ProjectComponent,
     NewTaskComponent,
-    TaskComponent,
-    TimeboxComponent
+    TaskComponent
   ],
   imports: [
     CommonModule,

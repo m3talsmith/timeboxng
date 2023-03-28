@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TimeWindow } from '../../time-window';
 import { isFinished } from '../../task';
+import { Timebox } from './timebox';
 
 @Component({
   selector: 'app-project-task',
@@ -34,11 +35,23 @@ export class TaskComponent implements OnInit{
   }
 
   estimatedIncrements(): number {
-    return Math.floor(this.estimate / 15);
+    return Math.ceil(this.estimate / 15);
   }
 
   progressIncrements(): number {
-    return Math.floor(this.timeWindowSum() / 15);
+    return Math.ceil(this.timeWindowSum() / 15);
+  }
+
+  timeboxes(): Timebox[] {
+    const min = this.estimatedIncrements();
+    const max = this.progressIncrements();
+    return Array
+      .from(Array(max).keys())
+      .map((n) => {
+        const complete = (n < max);
+        const overage = (n > min);
+        return {complete, overage};
+      });
   }
 
   progress(): number {
